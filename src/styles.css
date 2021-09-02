@@ -32,3 +32,31 @@ body {
     border: 0.4em dashed var(--placeholder-border-color);
     border-radius: .5rem;
 }
+
+
+/* DROPDOWN STYLES */
+#High:hover {
+    color:rgb(255, 0, 0);
+}
+
+.Medium:hover {
+    color: rgb(168, 98, 57);
+}
+
+#Low:hover {
+    color: rgb(0, 128, 0);
+}
+
+#sec-drop {
+    background-color: black;
+}
+
+#sec-drop > div > button {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#sec-drop > div > button:hover {
+    background-color: #007bffaa;
+    border-color: #007bffaa;
+}

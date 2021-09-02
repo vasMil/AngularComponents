@@ -26,7 +26,7 @@ body {
 
 .placeholder-box {
     width: 100%;
-    height: 70%;
+    height: 100%;
     margin: auto;
 
     background: var(--placeholder-bg-color);
@@ -38,8 +38,30 @@ body {
 
 
 /* DROPDOWN STYLES */
+#custom-dropdowns {
+    display: flex;
+    flex-direction: column;
+}
+
 vm-ac-dropdown{
     margin: auto;
+}
+
+#sec-drop::ng-deep > div > button {
+    /* width: 12rem;
+    height: 4rem;
+    font-size: 1.5em; */
+
+    background-color: var(--bootstrap-primary-color);
+    border-color:  var(--bootstrap-primary-color);
+    border-radius: 0.25rem;
+
+    color: white;
+}
+
+#sec-drop::ng-deep > div > button:hover {
+    background-color: #007bffaa;
+    border-color: #007bffaa;
 }
 
 #High:hover {
@@ -52,17 +74,4 @@ vm-ac-dropdown{
 
 #Low:hover {
     color: rgb(0, 128, 0);
-}
-
-#sec-drop::ng-deep > div > button {
-    background-color: var(--bootstrap-primary-color);
-    border-color:  var(--bootstrap-primary-color);
-    border-radius: 0.25rem;
-
-    color: white;
-}
-
-#sec-drop::ng-deep > div > button:hover {
-    background-color: #007bffaa;
-    border-color: #007bffaa;
 }

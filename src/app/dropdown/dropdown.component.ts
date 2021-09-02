@@ -17,8 +17,4 @@ export class DropdownComponent implements OnInit {
       text => this.name = text
     );
   }
-
-  onNotify(): void{
-    console.log("test");
-  }
 }

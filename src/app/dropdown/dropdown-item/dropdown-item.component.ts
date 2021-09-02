@@ -7,15 +7,12 @@ import { DropdownMessagePassingService } from '../dropdown-message-passing.servi
   styleUrls: ['./dropdown-item.component.css'],
   host: {'[id]': 'id'}
 })
-export class DropdownItemComponent implements OnInit {
+export class DropdownItemComponent {
   @Input() text: string = "";
   @Input() dropdown_id!: number;
   id: string = "";
 
   constructor(private messageService: DropdownMessagePassingService) { }
-
-  ngOnInit(): void {
-  }
 
   onClick(): void{
     this.messageService.emitMessage(this.dropdown_id, this.text);

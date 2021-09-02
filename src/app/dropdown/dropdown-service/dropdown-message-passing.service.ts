@@ -1,17 +1,15 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { DropdownServiceModule } from './dropdown-service.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: DropdownServiceModule
 })
 export class DropdownMessagePassingService {
   private _map = new Map();
 
-  constructor() {
-  }
-
   initServiceInstance(id: number, text: string): BehaviorSubject<string>{
-    let behaviorSubject = new BehaviorSubject(text);
+    const behaviorSubject = new BehaviorSubject(text);
     this._map.set(id, behaviorSubject);
     return behaviorSubject;
   }

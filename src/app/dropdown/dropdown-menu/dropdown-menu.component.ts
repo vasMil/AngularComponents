@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DropdownMessagePassingService } from './dropdown-message-passing.service';
+import { DropdownMessagePassingService } from '../dropdown-service/dropdown-message-passing.service';
 
 @Component({
   selector: 'vm-ac-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.css']
+  templateUrl: './dropdown-menu.component.html',
+  styleUrls: ['./dropdown-menu.component.css'],
 })
-export class DropdownComponent implements OnInit {
+export class DropdownMenuComponent implements OnInit {
   @Input() name!: string;
   @Input() dropdown_id!: number;
   private default_name!: string;
@@ -22,9 +22,9 @@ export class DropdownComponent implements OnInit {
 
   // If the user right-clicks on the dropdown button
   // it should reset to it's initial state
-  public onRClick(event: MouseEvent) {
+  public onRClick(event: MouseEvent): void {
     event.preventDefault();
-    let x = event.target as HTMLButtonElement;
+    const x = event.target as HTMLButtonElement;
     if (x.tagName.toLowerCase() !== "button" || event.button !== 2) {
       return;
     }

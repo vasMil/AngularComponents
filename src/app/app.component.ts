@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DropdownMessagePassingService } from './dropdown/dropdown-message-passing.service';
 
 @Component({
   selector: 'vm-ac-root',

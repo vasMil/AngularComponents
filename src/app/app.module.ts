@@ -2,17 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { DropdownComponent } from './dropdown/dropdown.component';
-import { DropdownItemComponent } from './dropdown/dropdown-item/dropdown-item.component';
+import { DropdownModule } from './dropdown/dropdown.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DropdownComponent,
-    DropdownItemComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

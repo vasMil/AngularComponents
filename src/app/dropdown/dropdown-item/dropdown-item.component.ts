@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DropdownMessagePassingService } from '../dropdown-message-passing.service';
+import { DropdownMessagePassingService } from '../dropdown-service/dropdown-message-passing.service';
 
 @Component({
   selector: 'vm-ac-dropdown-item',
@@ -7,7 +7,7 @@ import { DropdownMessagePassingService } from '../dropdown-message-passing.servi
   styleUrls: ['./dropdown-item.component.css']
 })
 export class DropdownItemComponent {
-  @Input() text: string = "";
+  @Input() text = "";
   @Input() dropdown_id!: number;
 
   constructor(private messageService: DropdownMessagePassingService) { }

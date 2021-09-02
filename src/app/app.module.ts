@@ -12,7 +12,6 @@ import { DropdownModule } from './dropdown/dropdown.module';
     BrowserModule,
     DropdownModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

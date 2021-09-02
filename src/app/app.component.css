@@ -1,0 +1,68 @@
+:host {
+    --placeholder-bg-color: hsl(189, 87%, 79%);
+    --placeholder-border-color: hsl(155, 23%, 18%);
+    --bootstrap-primary-color: #007bff;
+}
+
+body {
+    background-color: rgb(247, 192, 111);
+}
+
+.container {
+    height: 100vh;
+}
+
+.row {
+    height: 25%;
+}
+
+.col {
+    display: flex;
+}
+
+.col-lg-2 {
+    height: 50%
+}
+
+.placeholder-box {
+    width: 100%;
+    height: 70%;
+    margin: auto;
+
+    background: var(--placeholder-bg-color);
+    box-shadow: 0 0 1rem rgb(0 0 0 / .2);
+
+    border: 0.4em dashed var(--placeholder-border-color);
+    border-radius: .5rem;
+}
+
+
+/* DROPDOWN STYLES */
+vm-ac-dropdown{
+    margin: auto;
+}
+
+#High:hover {
+    color:rgb(255, 0, 0);
+}
+
+.Medium:hover {
+    color: rgb(168, 98, 57);
+}
+
+#Low:hover {
+    color: rgb(0, 128, 0);
+}
+
+#sec-drop::ng-deep > div > button {
+    background-color: var(--bootstrap-primary-color);
+    border-color:  var(--bootstrap-primary-color);
+    border-radius: 0.25rem;
+
+    color: white;
+}
+
+#sec-drop::ng-deep > div > button:hover {
+    background-color: #007bffaa;
+    border-color: #007bffaa;
+}

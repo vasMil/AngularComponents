@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { DropdownMessagePassingService } from './dropdown-message-passing.service';
 
 @Component({
   selector: 'vm-ac-dropdown',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dropdown.component.css']
 })
 export class DropdownComponent implements OnInit {
+  @Input() name!: string;
+  @Input() dropdown_id!: number;
 
-  constructor() { }
+  constructor(private messageService: DropdownMessagePassingService) { }
 
   ngOnInit(): void {
+    this.messageService.initServiceInstance(this.dropdown_id, this.name).subscribe(
+      text => this.name = text
+    );
   }
 
+  onNotify(): void{
+    console.log("test");
+  }
 }

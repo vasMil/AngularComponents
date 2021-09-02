@@ -10,10 +10,19 @@
   <div class="container">
     <div class="row justify-content-between">
       <div class="col-md-3 col-lg-2 align-self-center">
-        <div class="placeholder-box"></div>
+        <!-- Current -->
+        <vm-ac-dropdown name="DropDown" [dropdown_id]=1>
+          <vm-ac-dropdown-item text="option1" [dropdown_id] = 1></vm-ac-dropdown-item>
+          <vm-ac-dropdown-item text="option2" [dropdown_id] = 1></vm-ac-dropdown-item>
+          <vm-ac-dropdown-item text="option3" [dropdown_id] = 1></vm-ac-dropdown-item>
+        </vm-ac-dropdown>
       </div>
       <div class="col-md-3 col-lg-2 align-self-center">
-        <div class="placeholder-box"></div>
+        <vm-ac-dropdown name="DropDown">
+          <vm-ac-dropdown-item text="option1"></vm-ac-dropdown-item>
+          <vm-ac-dropdown-item text="option2"></vm-ac-dropdown-item>
+          <vm-ac-dropdown-item text="option3"></vm-ac-dropdown-item>
+        </vm-ac-dropdown>
       </div>
       <div class="col-md-3 col-lg-2 align-self-center">
         <div class="placeholder-box"></div>

@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, Output } from '@angular/core';
+import { DropdownMessagePassingService } from '../dropdown-message-passing.service';
 
 @Component({
   selector: 'vm-ac-dropdown-item',
   templateUrl: './dropdown-item.component.html',
-  styleUrls: ['./dropdown-item.component.css']
+  styleUrls: ['./dropdown-item.component.css'],
+  host: {'[id]': 'id'}
 })
 export class DropdownItemComponent implements OnInit {
+  @Input() text: string = "";
+  @Input() dropdown_id!: number;
+  id: string = "";
 
-  constructor() { }
+  constructor(private messageService: DropdownMessagePassingService) { }
 
   ngOnInit(): void {
   }
 
+  onClick(): void{
+    this.messageService.emitMessage(this.dropdown_id, this.text);
+  }
 }

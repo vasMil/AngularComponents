@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'vm-ac-dropdown-v2-menu',
+  selector: 'vm-ac-dropdown-v2',
   templateUrl: './dropdown-v2-menu.component.html',
   styleUrls: ['./dropdown-v2-menu.component.css']
 })

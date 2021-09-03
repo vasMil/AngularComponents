@@ -1,7 +1,15 @@
 :host {
     --placeholder-bg-color: hsl(288, 23%, 21%);
     --placeholder-border-color: hsl(278, 15%, 75%);
+
     --bootstrap-primary-color: #007bff;
+    --bootstrap-success-color: #5cb85c;
+    --bootstrap-info-color: #5bc0de;
+    --bootstrap-warning-color: #f0ad4e;
+    --bootstrap-danger-color: #d9534f;
+    --bootstrap-inverse-color: #292b2c;
+    --bootstrap-faded-color: #f7f7f7;
+
 }
 
 body {
@@ -39,6 +47,7 @@ div[class^="col"] {
     box-shadow: none;
     display: flex;
     flex-direction: column;
+    margin: auto;
 }
 
 
@@ -74,4 +83,21 @@ vm-ac-dropdown{
 
 #Low:hover {
     color: rgb(0, 128, 0);
+}
+
+/* DROPDOWN v2 Styles */
+vm-ac-dropdown-v2{
+    margin: auto;
+}
+
+.v2-drop::ng-deep > div > button {
+    background-color: var(--bootstrap-success-color);
+    border-color: var(--bootstrap-success-color);
+    color: var(--bootstrap-inverse-color);
+    font-weight: 600;
+}
+
+#option-v2 {
+    color: var(--bootstrap-success-color);
+    font-weight: 500;
 }

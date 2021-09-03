@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DropdownMessagePassingService } from '../dropdown-service/dropdown-message-passing.service';
+import { DropdownOutput } from '../dropdownOutput.model';
 
 @Component({
   selector: 'vm-ac-dropdown',
@@ -11,11 +12,19 @@ export class DropdownMenuComponent implements OnInit {
   @Input() dropdown_id!: number;
   private default_name!: string;
 
+  @Output() optionSelected = new EventEmitter<DropdownOutput>();
+
   constructor(private messageService: DropdownMessagePassingService) { }
 
   ngOnInit(): void {
     this.messageService.initServiceInstance(this.dropdown_id, this.name).subscribe(
-      text => this.name = text
+      text => {
+        this.name = text;
+        this.optionSelected.emit({
+          id: this.dropdown_id,
+          value: text
+        });
+      }
     );
     this.default_name = this.name;
   }

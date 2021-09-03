@@ -12,13 +12,13 @@
       <div class="col-sm-12 col-md-2 align-self-center">
         <div class="placeholder-box" id="has-content">     
           <!-- You may style each component separately -->
-          <vm-ac-dropdown name="Priority" [dropdown_id]=1>
+          <vm-ac-dropdown name="Priority" [dropdown_id]=1 (optionSelected)="onOptionSelected($event)">
             <vm-ac-dropdown-item text="High" [dropdown_id]=1 id="High"></vm-ac-dropdown-item>
             <vm-ac-dropdown-item text="Medium" [dropdown_id]=1 class="Medium"></vm-ac-dropdown-item>
             <vm-ac-dropdown-item text="Low" [dropdown_id]=1 id="Low" id="Low" style="font-weight: bold;"></vm-ac-dropdown-item>
           </vm-ac-dropdown>
           <!-- Demonstrates that two different components may live in the same page -->
-          <vm-ac-dropdown name="DropDown" [dropdown_id]=2 id="sec-drop">
+          <vm-ac-dropdown name="DropDown" [dropdown_id]=2 id="sec-drop" (optionSelected)="onOptionSelected($event)">
             <vm-ac-dropdown-item text="option1" [dropdown_id]=2></vm-ac-dropdown-item>
             <vm-ac-dropdown-item text="option2" [dropdown_id]=2></vm-ac-dropdown-item>
             <vm-ac-dropdown-item text="option3" [dropdown_id]=2></vm-ac-dropdown-item>
@@ -28,7 +28,7 @@
       <div class="col-sm-12 col-md-2 align-self-center">
         <div class="placeholder-box" id="has-content">
           <!-- Dropdown version 2 -->
-          <vm-ac-dropdown-v2 name="DropDown-v2" class="v2-drop">
+          <vm-ac-dropdown-v2 name="DropDown-v2" class="v2-drop" (optionSelected)="onOptionSelectedV2($event)">
             <vm-ac-dropdown-v2-item text="item1-v2" id="option-v2"></vm-ac-dropdown-v2-item>
             <vm-ac-dropdown-v2-item text="item2-v2" id="option-v2"></vm-ac-dropdown-v2-item>
           </vm-ac-dropdown-v2>

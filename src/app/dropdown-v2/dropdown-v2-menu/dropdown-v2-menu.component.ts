@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'vm-ac-dropdown-v2',
@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DropdownV2MenuComponent implements OnInit {
   @Input() name!: string;
   private _default_name!: string;
+
+  @Output() optionSelected: EventEmitter<string> = new EventEmitter();
 
   ngOnInit(): void {
     this._default_name = this.name;
@@ -23,6 +25,7 @@ export class DropdownV2MenuComponent implements OnInit {
     else if (targetElement.tagName.toLowerCase() === "button"){
       // logger message
       this.name = targetElement.textContent as string;
+      this.optionSelected.emit(this.name);
     }
     else {
       // logger message

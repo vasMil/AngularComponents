@@ -4,6 +4,8 @@ import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
 import { DropdownServiceModule } from './dropdown-service/dropdown-service.module';
 
+export { DropdownOutput } from './dropdownOutput.model'
+
 @NgModule({
   declarations: [
     DropdownMenuComponent,

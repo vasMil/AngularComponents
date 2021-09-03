@@ -1,11 +1,11 @@
 :host {
-    --placeholder-bg-color: hsl(189, 87%, 79%);
-    --placeholder-border-color: hsl(155, 23%, 18%);
+    --placeholder-bg-color: hsl(288, 23%, 21%);
+    --placeholder-border-color: hsl(278, 15%, 75%);
     --bootstrap-primary-color: #007bff;
 }
 
 body {
-    background-color: rgb(247, 192, 111);
+    background-color: rgb(36, 33, 35);
 }
 
 .container {

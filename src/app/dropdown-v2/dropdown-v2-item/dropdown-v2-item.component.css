@@ -1,0 +1,23 @@
+/* Attempts to preserve some basic bootstrap format, 
+while inheriting all custom styles from the parent element, the host */
+
+li, button {
+    all: inherit;
+    display: block;
+    width: 100%;
+}
+
+button {
+    padding: .25rem 1.5rem !important;
+}
+
+li:hover {
+    all: inherit;
+    
+}
+
+button:hover {
+    all: inherit;
+    width: 100%;
+    background-color: #f8f9fa;
+}

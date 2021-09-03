@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
 import { DropdownServiceModule } from './dropdown-service/dropdown-service.module';
+import { HttpClientModule } from '@angular/common/http';
+import { LoggerModule } from 'ngx-logger';
 
 export { DropdownOutput } from './dropdownOutput.model'
 
@@ -13,7 +15,9 @@ export { DropdownOutput } from './dropdownOutput.model'
   ],
   imports: [
     CommonModule,
-    DropdownServiceModule
+    DropdownServiceModule,
+    HttpClientModule,
+    LoggerModule.forChild()
   ],
   exports: [
     DropdownMenuComponent,

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DropdownMessagePassingService } from '../dropdown-service/dropdown-message-passing.service';
 import { DropdownOutput } from '../dropdownOutput.model';
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: 'vm-ac-dropdown',
@@ -14,9 +15,16 @@ export class DropdownMenuComponent implements OnInit {
 
   @Output() optionSelected = new EventEmitter<DropdownOutput>();
 
-  constructor(private messageService: DropdownMessagePassingService) { }
+  constructor(private messageService: DropdownMessagePassingService, private logger: NGXLogger) { }
 
   ngOnInit(): void {
+    if (this.name == null){
+      this.logger.warn("Dropdown default name is null");
+    }
+    else if (this.dropdown_id == null) {
+      this.logger.error("Dropdown id cannot be null!");
+      throw new Error("Dropdown id cannot be null!")
+    }
     this.messageService.initServiceInstance(this.dropdown_id, this.name).subscribe(
       text => {
         this.name = text;

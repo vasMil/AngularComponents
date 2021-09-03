@@ -9,25 +9,22 @@ body {
 }
 
 .container {
-    height: 100vh;
+    min-height: 100vh;
+    margin: auto;
 }
 
 .row {
-    height: 25%;
+    margin: auto;
 }
 
-.col {
-    display: flex;
-}
-
-.col-lg-2 {
-    height: 50%
+div[class^="col"] {
+    padding: 0;
 }
 
 .placeholder-box {
-    width: 100%;
-    height: 100%;
-    margin: auto;
+    min-width: 13vw;
+    height: 15vh;
+    margin: 0.5em auto;
 
     background: var(--placeholder-bg-color);
     box-shadow: 0 0 1rem rgb(0 0 0 / .2);
@@ -36,13 +33,16 @@ body {
     border-radius: .5rem;
 }
 
-
-/* DROPDOWN STYLES */
-#custom-dropdowns {
+#has-content {
+    background: none;
+    border: 0;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
 }
 
+
+/* DROPDOWN STYLES */
 vm-ac-dropdown{
     margin: auto;
 }

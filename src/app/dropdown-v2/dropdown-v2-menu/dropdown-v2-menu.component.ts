@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'vm-ac-dropdown-v2',
@@ -11,7 +12,12 @@ export class DropdownV2MenuComponent implements OnInit {
 
   @Output() optionSelected: EventEmitter<string> = new EventEmitter();
 
+  constructor(private logger: NGXLogger) { }
+
   ngOnInit(): void {
+    if (this.name == null){
+      this.logger.warn("Dropdown-v2 name is empty");
+    }
     this._default_name = this.name;
   }
 

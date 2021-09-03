@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
+import { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
+import { DropdownServiceModule } from './dropdown-service/dropdown-service.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoggerModule } from 'ngx-logger';
 
-
+export { DropdownOutput } from './dropdownOutput.model'
 
 @NgModule({
   declarations: [
-    DropdownItemComponent,
-    DropdownMenuComponent
+    DropdownMenuComponent,
+    DropdownItemComponent
   ],
   imports: [
     CommonModule,
+    DropdownServiceModule,
     HttpClientModule,
     LoggerModule.forChild()
   ],
   exports: [
-    DropdownItemComponent,
-    DropdownMenuComponent
+    DropdownMenuComponent,
+    DropdownItemComponent
   ]
 })
-export class DropdownModule { }
+export class DropdownModuleDepr { }

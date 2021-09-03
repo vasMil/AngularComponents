@@ -51,12 +51,12 @@ div[class^="col"] {
 }
 
 
-/* DROPDOWN STYLES */
-vm-ac-dropdown{
+/* DEPRICATED DROPDOWN STYLES */
+vm-dropdown-depr{
     margin: auto;
 }
 
-#sec-drop::ng-deep > div > button {
+#sec-drop-depr::ng-deep > div > button {
     /* width: 12rem;
     height: 4rem;
     font-size: 1.5em; */
@@ -68,7 +68,7 @@ vm-ac-dropdown{
     color: white;
 }
 
-#sec-drop::ng-deep > div > button:hover {
+#sec-drop-depr::ng-deep > div > button:hover {
     background-color: #007bffaa;
     border-color: #007bffaa;
 }
@@ -85,19 +85,19 @@ vm-ac-dropdown{
     color: rgb(0, 128, 0);
 }
 
-/* DROPDOWN v2 Styles */
-vm-ac-dropdown-v2{
+/* DROPDOWN Styles */
+vm-dropdown{
     margin: auto;
 }
 
-.v2-drop::ng-deep > div > button {
+.dropdown::ng-deep > div > button {
     background-color: var(--bootstrap-success-color);
     border-color: var(--bootstrap-success-color);
     color: var(--bootstrap-inverse-color);
     font-weight: 600;
 }
 
-#option-v2 {
+#option1, #option2 {
     color: var(--bootstrap-success-color);
     font-weight: 500;
 }

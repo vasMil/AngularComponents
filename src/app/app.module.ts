@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 import { AppComponent } from './app.component';
-import { DropdownV2Module } from './dropdown-v2/dropdown-v2.module';
 import { DropdownModule } from './dropdown/dropdown.module';
+import { DropdownModuleDepr } from './depricated/dropdown/dropdown.module';
 
 @NgModule({
   declarations: [
@@ -13,8 +13,8 @@ import { DropdownModule } from './dropdown/dropdown.module';
   ],
   imports: [
     BrowserModule,
+    DropdownModuleDepr,
     DropdownModule,
-    DropdownV2Module,
     HttpClientModule,
     LoggerModule.forRoot({
       level: NgxLoggerLevel.TRACE,

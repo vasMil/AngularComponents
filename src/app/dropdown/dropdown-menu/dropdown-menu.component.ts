@@ -1,40 +1,42 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DropdownMessagePassingService } from '../dropdown-service/dropdown-message-passing.service';
-import { DropdownOutput } from '../dropdownOutput.model';
-import { NGXLogger } from "ngx-logger";
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
-  selector: 'vm-ac-dropdown',
+  selector: 'vm-dropdown',
   templateUrl: './dropdown-menu.component.html',
-  styleUrls: ['./dropdown-menu.component.css'],
+  styleUrls: ['./dropdown-menu.component.css']
 })
 export class DropdownMenuComponent implements OnInit {
   @Input() name!: string;
-  @Input() dropdown_id!: number;
-  private default_name!: string;
+  private _default_name!: string;
 
-  @Output() optionSelected = new EventEmitter<DropdownOutput>();
+  @Output() optionSelected: EventEmitter<string> = new EventEmitter();
 
-  constructor(private messageService: DropdownMessagePassingService, private logger: NGXLogger) { }
+  constructor(private logger: NGXLogger) { }
 
   ngOnInit(): void {
     if (this.name == null){
-      this.logger.warn("Dropdown default name is null");
+      this.logger.warn("Dropdown name is empty");
     }
-    else if (this.dropdown_id == null) {
-      this.logger.error("Dropdown id cannot be null!");
-      throw new Error("Dropdown id cannot be null!")
+    this._default_name = this.name;
+  }
+
+  // Taking advantage of the fact that the event bubbles up to the parent elements
+  public onClick(event: MouseEvent): void {
+    event.stopPropagation;
+    const targetElement = event.target as HTMLElement;
+    if(targetElement.tagName.toLowerCase() === "li"){
+      // add this to logger
     }
-    this.messageService.initServiceInstance(this.dropdown_id, this.name).subscribe(
-      text => {
-        this.name = text;
-        this.optionSelected.emit({
-          id: this.dropdown_id,
-          value: text
-        });
-      }
-    );
-    this.default_name = this.name;
+    else if (targetElement.tagName.toLowerCase() === "button"){
+      // logger message
+      this.name = targetElement.textContent as string;
+      this.optionSelected.emit(this.name);
+    }
+    else {
+      // logger message
+    }
+    return;
   }
 
   // If the user right-clicks on the dropdown button
@@ -46,6 +48,6 @@ export class DropdownMenuComponent implements OnInit {
       return;
     }
     // Reset the button text
-    this.name = this.default_name;
+    this.name = this._default_name;
   }
 }

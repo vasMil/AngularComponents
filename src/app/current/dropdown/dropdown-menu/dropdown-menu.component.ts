@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'vm-dropdown',
   templateUrl: './dropdown-menu.component.html',
-  styleUrls: ['./dropdown-menu.component.css']
+  styleUrls: ['./dropdown-menu.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class DropdownMenuComponent implements OnInit {
   @Input() name!: string;

@@ -1,63 +1,27 @@
-:host {
-    --placeholder-bg-color: hsl(288, 23%, 21%);
-    --placeholder-border-color: hsl(278, 15%, 75%);
-
-    --bootstrap-primary-color: #007bff;
-    --bootstrap-success-color: #5cb85c;
-    --bootstrap-info-color: #5bc0de;
-    --bootstrap-warning-color: #f0ad4e;
-    --bootstrap-danger-color: #d9534f;
-    --bootstrap-inverse-color: #292b2c;
-    --bootstrap-faded-color: #f7f7f7;
-}
-
-.container {
-    min-height: 100vh;
-    margin: auto;
-}
-
-.row {
-    margin: auto;
-}
-
-div[class^="col"] {
-    padding: 0;
-}
-
-.placeholder-box {
-    min-width: 13vw;
-    height: 15vh;
-    margin: 0.5em auto;
-
-    background: var(--placeholder-bg-color);
-    box-shadow: 0 0 1rem rgb(0 0 0 / .2);
-
-    border: 0.4em dashed var(--placeholder-border-color);
-    border-radius: .5rem;
-}
-
-#has-content {
-    background: none;
-    border: 0;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-}
-
 /* DROPDOWN Styles */
 vm-dropdown{
     margin: auto;
 }
 
-.dropdown::ng-deep > div > button {
-    background-color: var(--bootstrap-success-color);
-    border-color: var(--bootstrap-success-color);
-    color: var(--bootstrap-inverse-color);
+.dropdown::ng-deep > div > button, .dropdown::ng-deep > div > .dropdown-menu {
+    background-color: transparent;
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+
+.dropdown:hover::ng-deep > div > button {
+    background-color: var(--main-color);
+    border-color: var(--button-hover-bg-color);
+    color: black;
     font-weight: 600;
 }
 
-#option1, #option2 {
-    color: var(--bootstrap-success-color);
+#option1:hover, #option2:hover {
     font-weight: 500;
+    background-color: var(--button-hover-bg-color);
+    color: black
+}
+
+#option1:hover::ng-deep > li > button.dropdown-item, #option2:hover::ng-deep > li > button.dropdown-item {
+    background-color: var(--main-color);
 }

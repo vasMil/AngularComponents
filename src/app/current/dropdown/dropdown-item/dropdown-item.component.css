@@ -12,8 +12,7 @@ button {
 }
 
 li:hover {
-    all: inherit;
-    
+    all: inherit;  
 }
 
 button:hover {

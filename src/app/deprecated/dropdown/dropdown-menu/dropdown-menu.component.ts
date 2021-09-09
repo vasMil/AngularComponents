@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { DropdownMessagePassingService } from '../dropdown-service/dropdown-message-passing.service';
 import { DropdownOutput } from '../dropdownOutput.model';
 import { NGXLogger } from "ngx-logger";
@@ -7,6 +7,7 @@ import { NGXLogger } from "ngx-logger";
   selector: 'vm-dropdown-depr',
   templateUrl: './dropdown-menu.component.html',
   styleUrls: ['./dropdown-menu.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class DropdownMenuComponent implements OnInit {
   @Input() name!: string;

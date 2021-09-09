@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'vm-dropdown-item',
   templateUrl: './dropdown-item.component.html',
-  styleUrls: ['./dropdown-item.component.css']
+  styleUrls: ['./dropdown-item.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class DropdownItemComponent implements OnInit {
 

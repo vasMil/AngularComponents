@@ -1,6 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+:root {
+    --body-bg-color: rgb(36, 33, 35);
+    --main-color: wheat;
+
+    --placeholder-hover-bg-color: rgba(245, 222, 179, 0.233);
+    --placeholder-border-color: var(--main-color);
+
+    --button-hover-bg-color: rgb(131, 119, 98);
+
+    --bootstrap-primary-color: #007bff;
+    --bootstrap-success-color: #5cb85c;
+    --bootstrap-info-color: #5bc0de;
+    --bootstrap-warning-color: #f0ad4e;
+    --bootstrap-danger-color: #d9534f;
+    --bootstrap-inverse-color: #292b2c;
+    --bootstrap-faded-color: #f7f7f7;
+}
+
 body {    
-    background-color: rgb(36, 33, 35);
+        background-color: var(--body-bg-color);
+}
+
+.container {
+    min-height: 100vh;
+    margin: auto;
+}
+
+.row {
+    margin: auto;
+}
+
+div[class^="col"] {
+    padding: 0;
+}
+
+.placeholder-box {
+    min-width: 13vw;
+    height: 15vh;
+    margin: 0.5em auto;
+
+    background: var(--placeholder-bg-color);
+
+    border: 0.1rem dashed var(--placeholder-border-color);
+    border-radius: .5rem;
+}
+
+.placeholder-box:hover {
+    background-color: var(--placeholder-hover-bg-color);
+    box-shadow: 0 0 0.5rem var(--placeholder-hover-bg-color);
+}
+
+#has-content {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
 }

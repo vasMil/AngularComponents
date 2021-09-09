@@ -4,22 +4,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 import { AppComponent } from './app.component';
-import { DropdownModule } from './dropdown/dropdown.module';
-import { DropdownModuleDepr } from './depricated/dropdown/dropdown.module';
+import { CurrentModule, CurrentViewComponent } from './current/current.module';
+import { DeprecatedModule, DeprecatedViewComponent } from './deprecated/deprecated.module';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    DropdownModuleDepr,
-    DropdownModule,
+    CurrentModule,
+    DeprecatedModule,
     HttpClientModule,
     LoggerModule.forRoot({
       level: NgxLoggerLevel.TRACE,
       serverLogLevel: NgxLoggerLevel.ERROR
-    })
+    }),
+    RouterModule.forRoot([
+      { path: 'home', component: HomeComponent },
+      { path: 'current-components', component: CurrentViewComponent},
+      { path: 'deprecated-components', component: DeprecatedViewComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path:'**', redirectTo: 'home' } //TODO: Make a 404 error page
+    ])
   ],
   bootstrap: [AppComponent]
 })

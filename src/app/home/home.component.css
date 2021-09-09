@@ -1,0 +1,35 @@
+:host {
+    width: 100%;
+    height: 100%;
+}
+
+.jumbotron {
+    color: wheat;
+    border: 1px solid wheat;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.my-container {
+    margin-top: 2rem;
+}
+
+.btn.btn-primary {
+    background-color: transparent;
+    border-color: wheat;
+    color: wheat;
+}
+
+.btn.btn-primary:hover {
+    background-color: wheat;
+    border-color: rgb(131, 119, 98);
+    color: black;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 550px) {
+    .my-container {
+        margin-top: 10rem;
+    }
+}

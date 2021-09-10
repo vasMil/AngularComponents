@@ -9,11 +9,11 @@ In this folder the current version of the dropdown module was deployed in order 
 3. Import the nmp dependencies inside the angular.json file, under the scripts tag
 4. Build your code, using: `ng build --prod --output-hasing none` (--prod can be omitted)
 5. Create an .html file that you want to use that custom web component in and link the files in the dist folder (using the order bellow)
-   - a. `<link rel="stylesheet" href="path/to/dist/.../styles.css"`
-   - b. '<script type="text/javascript" src="path/to/dist/.../scripts.js"></script>'
-   - c. '<script type="text/javascript" src="path/to/dist/.../runtime.js"></script>'
-   - d. '<script type="text/javascript" src="path/to/dist/.../polyfills.js"></script>'
-   - e. '<script type="text/javascript" src="path/to/dist/.../main.js"></script>'
+  - `<link rel="stylesheet" href="path/to/dist/.../styles.css"`
+  - '<script type="text/javascript" src="path/to/dist/.../scripts.js"></script>'
+  - '<script type="text/javascript" src="path/to/dist/.../runtime.js"></script>'
+  - '<script type="text/javascript" src="path/to/dist/.../polyfills.js"></script>'
+  - '<script type="text/javascript" src="path/to/dist/.../main.js"></script>'
 
 ## Extra Notes
 - You can not directly build this angular project, because it uses routing and has the views that are not webcomponents.

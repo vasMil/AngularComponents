@@ -1,33 +1,28 @@
 import { DoBootstrap, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
-import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
+import { DropdownItemComponent } from './dropdown/dropdown-item/dropdown-item.component';
+import { DropdownMenuComponent } from './dropdown/dropdown-menu/dropdown-menu.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoggerModule } from 'ngx-logger';
 import { Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements'
-
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     DropdownItemComponent,
-    DropdownMenuComponent
+    DropdownMenuComponent,
+    AppComponent
   ],
   imports: [
-    CommonModule,
+    BrowserModule,
     HttpClientModule,
-    LoggerModule.forChild()
-  ],
-  exports: [
-    DropdownItemComponent,
-    DropdownMenuComponent
   ],
   entryComponents: [
     DropdownMenuComponent,
     DropdownItemComponent
   ]
 })
-export class DropdownModule implements DoBootstrap{
+export class AppModule implements DoBootstrap {
 
   constructor(private injector: Injector) { }
 

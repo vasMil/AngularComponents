@@ -1,14 +1,49 @@
-<div class="card text-center">
+<div *ngIf="!hasVoted && !updating" class="card prompt text-center">
     <div class="card-header">
-        {{headerText}}
+        Did you like our site?
     </div>
     <div class="card-body">
         <h5 class="card-title mb-5 mt-3">Vote by clicking on an icon!</h5>
         <div class="icon-wrapper">
-            <img class="icon" *ngFor="let icon of icons" src="../assets/voter-assets/{{icon}}">
+            <img class="icon" 
+            *ngFor="let icon of icons" 
+            id="{{icon}}" 
+            src="../assets/voter-assets/{{icon}}.png" 
+            (click)="onClick($event)">
         </div>
     </div>
     <div class="card-footer">
-        {{footerText}}
+        Feedback is always welcome!
+    </div>
+</div>
+
+<div *ngIf="updating" class="card update">
+    <vm-spinner spinnerWidth="8em"></vm-spinner>
+</div>
+
+<div *ngIf="hasVoted" class="card text-center">
+    <div class="card-header">
+        Results
+    </div>
+    <div class="card-body">
+        <div class="row result-wrapper" *ngFor="let icon of icons">
+            <div class="col-1">
+                <img class="icon"
+                    id="{{icon}}" 
+                    src="../assets/voter-assets/{{icon}}.png" 
+                    (click)="onClick($event)">
+            </div>
+            <div class="col-8">
+                <div class="progress">
+                    <div class="progress-bar" id="{{icon}}" role="progressbar" style="width: 30%">
+                        <div class="text-icon">{{icon}}</div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        Thank you for voting!
     </div>
 </div>

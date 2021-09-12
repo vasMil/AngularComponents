@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'vm-voter',
@@ -6,9 +6,23 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./voter.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class VoterComponent {
-  headerText = "Did you like our site?";
-  footerText = "Feedback is always welcome!";
-
+export class VoterComponent implements OnInit{
   @Input() icons!: string[];
+  icons_file!: string[];
+
+  hasVoted = false;
+  updating = false;
+
+  ngOnInit(): void {
+    this.icons_file = this.icons;
+    this.icons = this.icons.map(icon => icon.split('.')[0]);
+  }
+
+  // Use transactions!
+  onClick(event: Event): void {
+    const clickedIcon = event.target as HTMLElement;
+    console.log(clickedIcon.id);
+    // this.updating = true;
+    this.hasVoted = true;
+  }
 }

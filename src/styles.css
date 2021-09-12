@@ -20,7 +20,7 @@
 }
 
 body {    
-        background-color: var(--body-bg-color);
+    background-color: var(--body-bg-color);
 }
 
 .container {
@@ -58,5 +58,6 @@ div[class^="col"] {
     box-shadow: none;
     display: flex;
     flex-direction: column;
-    margin: auto;
+    justify-content: center;
+    align-items: center;
 }

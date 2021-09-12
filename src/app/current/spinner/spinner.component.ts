@@ -13,6 +13,9 @@ export class SpinnerComponent implements OnInit {
   @HostBinding("style.--spinner-color")
   @Input() spinnerColor!: string;
 
+  @HostBinding("style.--spinner-radius")
+  @Input() radiusPercentage!: string;
+
   @HostBinding("style.--inner-spinner-width")
   @Input() holeSize!: string;
 

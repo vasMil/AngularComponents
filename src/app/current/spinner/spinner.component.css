@@ -1,11 +1,14 @@
 :host {
     --bg-color: transparent;
+
     --spinner-width: 4em;
     --spinner-height: var(--spinner-width);
     --spinner-border-width: calc(0.02*var(--spinner-width));
     --spinner-color: white;
-    --animation-duration: 8s;
+    --spinner-radius: 10%;
+
     --inner-spinner-width: calc(var(--spinner-width)/2);
+    --animation-duration: 8s;
   }
   
   .outer-spinner {
@@ -27,6 +30,7 @@
     width: calc(70% - var(--spinner-border-width));
     height: calc(70% - var(--spinner-border-width));
     border: var(--spinner-border-width) solid var(--spinner-color);
+    border-radius: var(--spinner-radius);
     background-color: var(--spinner-color);
     
     transform: rotate(45deg);

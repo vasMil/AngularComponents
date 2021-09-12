@@ -10,6 +10,9 @@ import { VoterComponent } from './voter.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    VoterComponent
   ]
 })
 export class VoterModule { }

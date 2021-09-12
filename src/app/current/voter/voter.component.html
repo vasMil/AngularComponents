@@ -1,1 +1,14 @@
-<p>voter works!</p>
+<div class="card text-center">
+    <div class="card-header">
+        {{headerText}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title mb-5 mt-3">Vote by clicking on an icon!</h5>
+        <div class="icon-wrapper">
+            <img class="icon" *ngFor="let icon of icons" src="../assets/voter-assets/{{icon}}">
+        </div>
+    </div>
+    <div class="card-footer">
+        {{footerText}}
+    </div>
+</div>

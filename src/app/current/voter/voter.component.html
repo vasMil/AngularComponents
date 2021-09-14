@@ -26,19 +26,17 @@
         Results
     </div>
     <div class="card-body">
-        <div class="row result-wrapper" *ngFor="let icon of icons">
+        <div class="row result-wrapper" *ngFor="let row of votesToPercentMap | keyvalue">
             <div class="col-1">
                 <img class="icon"
-                    id="{{icon}}" 
-                    src="../assets/voter-assets/{{icon}}.png" 
-                    (click)="onClick($event)">
+                    id="{{row.key.icon}}" 
+                    src="../assets/voter-assets/{{row.key.icon}}.png">
             </div>
             <div class="col-8">
                 <div class="progress">
-                    <div class="progress-bar" id="{{icon}}" role="progressbar" style="width: 30%">
-                        <div class="text-icon">{{icon}}</div>
-                    </div>
-                </div>            
+                    <span class="text-icon">{{row.key.icon}} {{row.value | number:'1.2-2'}}%</span>
+                    <div class="progress-bar" id="{{row.key.icon}}" role="progressbar" style="width: {{row.value}}%"></div>
+                </div>
             </div>
         </div>
     </div>

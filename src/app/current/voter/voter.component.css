@@ -79,6 +79,7 @@
 .progress {
     text-align: center;
     position: relative;
+    height: 1.5em;
 }
 
 .progress-bar#love {

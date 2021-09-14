@@ -19,11 +19,10 @@ export default function createRouter(db) {
         });
     })
 
-    router.put('/votes/:icon/:new_val', (req, res)=> {
-        const icon = req.params.icon.toString();
-        const new_val = parseInt(req.params.new_val);
+    router.put('/votes', (req, res)=> {
+        const icon = req.body.icon;
         db.query(
-            `UPDATE votes SET num_of_votes = ${new_val} WHERE icon="${icon}";`,
+            `UPDATE votes SET num_of_votes = num_of_votes + 1 WHERE icon="${icon}";`,
             (error, results) => {
                 if(error) {
                     console.log(error);

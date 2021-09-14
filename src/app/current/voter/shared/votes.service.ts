@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { VoteResponse } from './voteResponse.model';
 
 @Injectable({
@@ -17,5 +17,9 @@ export class VotesService {
       .pipe(tap((response) => {
         this.voteResponse = response;
       }));
+  }
+
+  incrementVotes(icon: string): Observable<any> {
+    return this.http.put(`http://localhost:8080/votes`, {"icon": icon});
   }
 }

@@ -41,14 +41,24 @@ export class VoterComponent implements OnInit{
         this.updating = false;
         this.hasVoted = true;
       },
-      error: (err) => {console.log("Could not fetch data: ", err);} // TODO Logger?
+      error: (err) => {console.log("Could not fetch data: ", err);} // TODO: Logger?
     });
   }
 
-  // Use transactions!
+  registerVote(icon: string): void {
+    this.votesService.incrementVotes(icon).subscribe({
+      next: (resp) => {
+        console.log(resp);
+        this.loadVoteData();
+      },
+      error: (err) => {
+        console.log("Failed to update the database! ", err)
+      } // TODO: Logger?
+    })
+  }
+
   onClick(event: Event): void {
     const clickedIcon = event.target as HTMLElement;
-    console.log(clickedIcon.id);
-    this.loadVoteData();
+    this.registerVote(clickedIcon.id);
   }
 }

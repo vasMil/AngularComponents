@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng -o serve",
+    "start": "node server.js",
     "restart": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -21,6 +21,7 @@
     "@angular/router": "^12.2.5",
     "@popperjs/core": "^2.10.1",
     "bootstrap": "^5.1.1",
+    "express": "^4.17.1",
     "jquery": "^3.6.0",
     "ngx-logger": "^4.3.3",
     "rxjs": "^7.3.0",

@@ -8,7 +8,10 @@ function requireHTTPS(req, res, next) {
 const express = require('express');
 const app = express();
 
+// REMIND: remove this line to run locally!
+// Unless you have ssl certificates configured.
 app.use(requireHTTPS);
+
 app.use(express.static('./dist/AngularComponents'));
 
 app.get('/*', (req, res) => {

@@ -13,13 +13,13 @@ export class VotesService {
 
   get fetchVoteData() {
     return this.http.get<VoteResponse[]>(
-      "http://localhost:8080/votes")
+      "https://vm-voter-api.herokuapp.com/votes")
       .pipe(tap((response) => {
         this.voteResponse = response;
       }));
   }
 
   incrementVotes(icon: string): Observable<any> {
-    return this.http.put(`http://localhost:8080/votes`, {"icon": icon});
+    return this.http.put(`https://vm-voter-api.herokuapp.com/votes`, {"icon": icon});
   }
 }

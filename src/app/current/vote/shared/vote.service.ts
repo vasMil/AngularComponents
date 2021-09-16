@@ -6,20 +6,20 @@ import { VoteResponse } from './voteResponse.model';
 @Injectable({
   providedIn: 'root'
 })
-export class VotesService {
+export class VoteService {
   voteResponse: VoteResponse[] = [];
 
   constructor(private http: HttpClient) { }
 
   get fetchVoteData() {
     return this.http.get<VoteResponse[]>(
-      "https://vm-voter-api.herokuapp.com/votes")
+      "http://localhost:8080/votes")
       .pipe(tap((response) => {
         this.voteResponse = response;
       }));
   }
 
   incrementVotes(icon: string): Observable<any> {
-    return this.http.put(`https://vm-voter-api.herokuapp.com/votes`, {"icon": icon});
+    return this.http.put(`http://localhost:8080/votes`, {"icon": icon});
   }
 }

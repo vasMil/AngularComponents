@@ -1,14 +1,14 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { VoteResponse } from './shared/voteResponse.model';
-import { VotesService } from './shared/votes.service';
+import { VoteService } from './shared/vote.service';
 
 @Component({
   selector: 'vm-voter',
-  templateUrl: './voter.component.html',
-  styleUrls: ['./voter.component.css'],
+  templateUrl: './vote.component.html',
+  styleUrls: ['./vote.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class VoterComponent implements OnInit{
+export class VoteComponent implements OnInit{
   @Input() icons!: string[];
   icons_file!: string[];
 
@@ -17,7 +17,7 @@ export class VoterComponent implements OnInit{
 
   votesToPercentMap = new Map<VoteResponse, number>();
 
-  constructor(private votesService: VotesService) { }
+  constructor(private voteService: VoteService) { }
 
   ngOnInit(): void {
     this.icons_file = this.icons;
@@ -28,9 +28,9 @@ export class VoterComponent implements OnInit{
     this.updating = true;
     let voteSet = new Set<VoteResponse>();
     let totalVotes = 0;
-    this.votesService.fetchVoteData.subscribe({
+    this.voteService.fetchVoteData.subscribe({
       next: () => {
-        this.votesService.voteResponse.forEach((voteRec) => {
+        this.voteService.voteResponse.forEach((voteRec) => {
           voteSet.add(voteRec);
           totalVotes += voteRec.num_of_votes;
         })
@@ -46,7 +46,7 @@ export class VoterComponent implements OnInit{
   }
 
   registerVote(icon: string): void {
-    this.votesService.incrementVotes(icon).subscribe({
+    this.voteService.incrementVotes(icon).subscribe({
       next: (resp) => {
         console.log(resp);
         this.loadVoteData();

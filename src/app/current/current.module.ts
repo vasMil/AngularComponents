@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CurrentViewComponent } from './current-view/current-view.component';
 import { DropdownModule } from './dropdown/dropdown.module';
 import { SpinnerModule } from './spinner/spinner.module';
-import { VoterModule } from './voter/voter.module';
+import { VoteModule } from './vote/vote.module';
 
 /* Exporting the view here since I want to be able to route to that view.
 I don't need to have access to the component's selector, hence I don't use the exports array
@@ -18,7 +18,7 @@ export { CurrentViewComponent }
     CommonModule,
     DropdownModule,
     SpinnerModule,
-    VoterModule
+    VoteModule
   ]
 })
 export class CurrentModule { }

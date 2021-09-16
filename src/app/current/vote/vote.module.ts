@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VoterComponent } from './voter.component';
+import { VoteComponent } from './vote.component';
 import { SpinnerModule } from '../spinner/spinner.module';
 
 
 
 @NgModule({
   declarations: [
-    VoterComponent
+    VoteComponent
   ],
   imports: [
     CommonModule,
     SpinnerModule
   ],
   exports: [
-    VoterComponent
+    VoteComponent
   ]
 })
-export class VoterModule { }
+export class VoteModule { }

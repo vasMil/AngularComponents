@@ -21,7 +21,7 @@
     <vm-spinner spinnerWidth="8em"></vm-spinner>
 </div>
 
-<div *ngIf="hasVoted" class="card text-center">
+<div *ngIf="hasVoted && !updating" class="card text-center">
     <div class="card-header">
         Results
     </div>

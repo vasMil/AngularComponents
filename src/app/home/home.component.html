@@ -1,27 +1,26 @@
-<div routerLink="/home" class="jumbotron">
-    <h1 class="display-4">Custom Angular Components</h1>
-    <p class="lead">Attempting to create my own custom components in Angular, as I learn more about the framework!</p>
-    <hr class="my-4">
-    <div class="jumbotron-acknowledgements">
-      <p id="acknowledgement">I will certainly make a lot of bad implementation choices.</p>
-      <p id="acknowledgement">I most definitely will use git the wrong way.</p>
-      <p id="acknowledgement">The structure of my code will have flaws.</p>
-      <p id="acknowledgement">Feedback is always welcome!</p>
-    </div>
-  </div>
-  
-  <div class="container my-container">
-    <div class="row">
-      <div class="col col-md-6 col-sm-12">
-        <div class="d-flex justify-content-center">
-          <div class="btn btn-primary btn-lg" (click)="goToCustomView()">Current Components</div>
-        </div>
-      </div>
-  
-      <div class="col-md-6 col-sm-12">
-        <div class="d-flex justify-content-center">
-          <div class="btn btn-primary btn-lg" (click)="goToDeprecatediView()">Deprecated Components</div>
-        </div>
+<div routerLink="/home" class="container">
+  <div class="jumbotron">
+      <h1 class="display-4">Custom Angular Components</h1>
+      <p class="lead">Attempting to create my own custom components in Angular, as I learn more about the framework!</p>
+      <hr class="my-4">
+      <div class="jumbotron-acknowledgements">
+        <p id="acknowledgement">I will certainly make a lot of bad implementation choices.</p>
+        <p id="acknowledgement">I most definitely will use git the wrong way.</p>
+        <p id="acknowledgement">The structure of my code will have flaws.</p>
+        <p id="acknowledgement">Feedback is always welcome!</p>
       </div>
     </div>
-  </div>
+            <div class="row">
+        <div class="col col-md-6 col-sm-12">
+          <div class="d-flex justify-content-center">
+            <div class="btn btn-primary btn-lg" (click)="goToCustomView()">Current Components</div>
+          </div>
+        </div>
+    
+        <div class="col-md-6 col-sm-12">
+          <div class="d-flex justify-content-center">
+            <div class="btn btn-primary btn-lg" (click)="goToDeprecatediView()">Deprecated Components</div>
+          </div>
+        </div>
+      </div>
+</div>

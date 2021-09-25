@@ -19,27 +19,19 @@
     --bootstrap-faded-color: #f7f7f7;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {    
     background-color: var(--body-bg-color);
 }
 
-.container {
-    min-height: 100vh;
-    margin: auto;
-}
-
-.row {
-    margin: auto;
-}
-
-div[class^="col"] {
-    padding: 0;
-}
-
 .placeholder-box {
-    min-width: 13vw;
-    height: 15vh;
-    margin: 0.5em auto;
+    min-width: 15vw;
+    min-height: 15vh;
+    margin: 1rem 0;
 
     background: var(--placeholder-bg-color);
 

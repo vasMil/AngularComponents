@@ -1,6 +1,10 @@
 :host {
+    --jumbotron-margin: 2rem;
+}
+
+html, body {
     width: 100%;
-    height: 100%;
+    height: 100%;  
 }
 
 .jumbotron {
@@ -8,11 +12,7 @@
     border: 1px solid var(--main-color);
     border-radius: 1rem;
     padding: 2rem;
-    margin: 2rem;
-}
-
-.my-container {
-    margin-top: 2rem;
+    margin: var(--jumbotron-margin);
 }
 
 .btn.btn-primary {
@@ -30,6 +30,6 @@
 
 @media screen and (min-width: 550px) {
     .my-container {
-        margin-top: 10rem;
+        margin-top: 8rem;
     }
 }

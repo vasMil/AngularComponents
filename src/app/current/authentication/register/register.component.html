@@ -1,1 +1,59 @@
-<p>register works!</p>
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModal">{{title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form [formGroup]="registerForm" *ngIf="this.state === 0">
+            <div class="form-group mb-3">
+              <label class="form-label">
+                Email address
+                <span style="color:red">
+                  *
+                </span>
+              </label>
+              <input type="email" class="form-control" id="email" placeholder="example@mail.com" formControlName="email">
+              <div *ngIf="email?.touched && email?.errors?.email" class="form-text text-danger">Invalid email!</div>
+              <div *ngIf="email?.touched && email?.errors?.required" class="form-text text-danger">Email is required!</div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">
+                Username
+                <span style="color:red">
+                  *
+                </span>
+              </label>
+              <input type="username" class="form-control" id="username" formControlName="username">
+              <!-- <div *ngIf="username?.touched && username?.invalid" class="form-text text-danger">Username already exists.</div> -->
+              <div *ngIf="username?.touched && username?.errors?.required" class="form-text text-danger">Username is required!</div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">
+                Password
+                <span style="color:red">
+                  *
+                </span>
+              </label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+              <div *ngIf="password?.untouched || password?.valid" id="passwordHelpBlock" class="form-text">Your password must be 8-20 characters long, contain letters, numbers and at least one special character.</div>
+              <div *ngIf="password?.touched && password?.invalid" class="form-text text-danger">Your password must be 8-20 characters long, contain letters, numbers and at least one special character.</div>
+              <div *ngIf="password?.touched && password?.errors?.required" class="form-text text-danger">Password is required!</div>
+            </div>
+          </form>
+
+          <div class="message" *ngIf="this.state === 1 || this.state === 2">{{message}}</div>
+          
+        </div>
+        <div class="modal-footer">
+          <button *ngIf="this.state !== 2" type="submit" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onClose()">Close</button>
+          <button *ngIf="this.state === 0" type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="!canSubmit">Submit</button>
+          <button *ngIf="this.state === 2" type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+        </div>
+      </div>
+    </div>
+</div>

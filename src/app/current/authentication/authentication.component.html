@@ -1,1 +1,35 @@
-<p>authentication works!</p>
+<div *ngIf="state === 0" class="state0">
+    <div class="row">
+        <div class="col-6 px-0">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal"
+            style="width:99%; min-width: fit-content;">
+                Login
+            </button>
+        </div>
+        <div class="col-6 px-0">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal"
+            style="width:99%; min-width: fit-content;">
+                Register
+            </button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="state === 1" class="state1">
+    <div class="row">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal"
+        style="width:99%; min-width: fit-content;">
+            Login
+        </button>
+    </div>
+</div>
+
+<div *ngIf="state === 2" class="state2">
+    <div class="row">
+        username
+    </div>
+</div>
+
+
+<vm-register *ngIf="state === 0"></vm-register>
+<vm-login *ngIf="state === 0 || state === 1"></vm-login>

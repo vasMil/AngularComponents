@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { User } from '../shared/user.model';
 
 @Component({
   selector: 'vm-register',
@@ -6,10 +9,86 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  @Output() registerComplete: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() { }
+  registerForm!: FormGroup;
+
+  title = "Register";
+  message: string | undefined;
+
+  canSubmit = false;
+
+  // state 0 => initial
+  // state 1 => register success
+  // state 2 => register error
+  state = 0;
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      email: ['',[
+        Validators.required,
+        Validators.email
+      ]],
+      username: ['',[
+        Validators.required
+      ]],
+      password: ['',[
+        Validators.required,
+        Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d!@#$%^&]{8,20}$/)
+      ]]
+    })
+
+    this.registerForm.valueChanges.subscribe({
+      next: () => {
+        if(this.registerForm.valid) {
+          this.canSubmit = true;
+        }
+      }
+    })
   }
 
+  onSubmit(): void {
+    if(this.registerForm.valid){
+      this.authService.registerUser(new User(this.username?.value, this.email?.value, this.password?.value)).subscribe({
+        next: (resp) => {
+          this.message = resp.message;
+          this.registerComplete.emit(true);
+          this.title = "Success";
+          this.state = 1;
+        },
+        error: (error) => {
+          this.title = "Registration Failed"
+          this.message = error.error.message;
+          this.state = 2;
+        }
+      })
+    }
+  }
+
+  onClose(): void {
+    setTimeout(() => {
+      this.resetView()
+    }, 200)
+  }
+
+  onBack(): void {
+    this.resetView();
+  }
+
+  private resetView(): void {
+    this.state = 0;
+    this.title = "Register";
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+  get username() {
+    return this.registerForm.get('username');
+  }
+  get password() {
+    return this.registerForm.get('password');
+  }
 }

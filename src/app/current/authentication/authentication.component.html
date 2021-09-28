@@ -31,5 +31,5 @@
 </div>
 
 
-<vm-register *ngIf="state === 0"></vm-register>
+<vm-register *ngIf="state === 0" (registerComplete)="this.state = this.state + 1"></vm-register>
 <vm-login *ngIf="state === 0 || state === 1"></vm-login>

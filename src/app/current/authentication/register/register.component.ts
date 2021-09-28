@@ -44,7 +44,6 @@ export class RegisterComponent implements OnInit {
       this.authService.registerUser(new User(this.username?.value, this.email?.value, this.password?.value)).subscribe({
         next: (resp) => {
           this.message = resp.message;
-          this.registerComplete.emit(true);
           this.title = "Success";
           this.state = 1;
         },
@@ -79,7 +78,10 @@ export class RegisterComponent implements OnInit {
 
   onClose(): void {
     setTimeout(() => {
-      this.resetView()
+      if(this.state === 1) {
+        this.registerComplete.emit(true);
+      }
+      this.resetView();
     }, 200)
   }
 

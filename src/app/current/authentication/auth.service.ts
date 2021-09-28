@@ -17,12 +17,4 @@ export class AuthService {
   usernameUsed(username: string) {
     return this.http.post("http://localhost:8080/username_used", {username: username});
   }
-
-/*   get emailUsed() {
-    return this.http.get("http://localhost:8080/email_used");
-  }
-
-  get usernameUsed() {
-    return this.http.get("http://localhost:8080/username_used");
-  } */
 }

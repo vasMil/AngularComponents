@@ -14,6 +14,10 @@ export class AuthService {
     return this.http.post<User>("http://localhost:8080/register", newUser.toJSON());
   }
 
+  usernameUsed(username: string) {
+    return this.http.post("http://localhost:8080/username_used", {username: username});
+  }
+
 /*   get emailUsed() {
     return this.http.get("http://localhost:8080/email_used");
   }

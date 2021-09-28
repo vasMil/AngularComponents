@@ -16,8 +16,6 @@ export class RegisterComponent implements OnInit {
   title = "Register";
   message: string | undefined;
 
-  canSubmit = false;
-
   // state 0 => initial
   // state 1 => register success
   // state 2 => register error
@@ -39,14 +37,6 @@ export class RegisterComponent implements OnInit {
         Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d!@#$%^&]{8,20}$/)
       ]]
     })
-
-    this.registerForm.valueChanges.subscribe({
-      next: () => {
-        if(this.registerForm.valid) {
-          this.canSubmit = true;
-        }
-      }
-    })
   }
 
   onSubmit(): void {
@@ -59,9 +49,29 @@ export class RegisterComponent implements OnInit {
           this.state = 1;
         },
         error: (error) => {
-          this.title = "Registration Failed"
           this.message = error.error.message;
-          this.state = 2;
+          if(error.error.email_used && error.error.username_used) {
+            this.registerForm.get('email')?.setErrors({
+              emailUsed: true
+            })
+            this.registerForm.get('username')?.setErrors({
+              usernameUsed: true
+            })
+          }
+          else if(error.error.email_used) {
+            this.registerForm.get('email')?.setErrors({
+              emailUsed: true
+            })
+          }
+          else if(error.error.username_used) {
+            this.registerForm.get('username')?.setErrors({
+              usernameUsed: true
+            })
+          }
+          else {
+            this.title = "Registration Failed"
+            this.state = 2;
+          }
         }
       })
     }

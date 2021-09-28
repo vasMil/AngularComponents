@@ -30,22 +30,33 @@ export class VoteComponent implements OnInit{
   }
 
   loadVoteData(): void {
+
+    if (this.voteService.voteResponse.length) {
+      this.setPercentageMapper();
+    }
+    else {
+      this.voteService.fetchVoteData.subscribe({
+        next: () => {
+          this.setPercentageMapper();
+        },
+        error: (err) => {
+          console.log("Could not fetch data: ", err);
+        } // TODO: Logger?
+      });
+    }
+  }
+
+  private setPercentageMapper() {
     let voteSet = new Set<VoteResponse>();
     let totalVotes = 0;
-    this.voteService.fetchVoteData.subscribe({
-      next: () => {
-        this.voteService.voteResponse.forEach((voteRec) => {
-          voteSet.add(voteRec);
-          totalVotes += voteRec.num_of_votes;
-        })
-        this.votesToPercentMap.clear();
-        voteSet.forEach((vote) => {
-          this.votesToPercentMap.set(vote, (vote.num_of_votes/totalVotes)*100);
-        });
-      },
-      error: (err) => {
-        console.log("Could not fetch data: ", err);
-      } // TODO: Logger?
+    this.voteService.voteResponse.forEach((voteRec) => {
+      voteSet.add(voteRec);
+      totalVotes += voteRec.num_of_votes;
+    });
+    this.votesToPercentMap.clear();
+    voteSet.forEach((vote) => {
+      totalVotes === 0 ? this.votesToPercentMap.set(vote, 0) : 
+        this.votesToPercentMap.set(vote, (vote.num_of_votes/totalVotes)*100);
     });
   }
 

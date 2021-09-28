@@ -15,7 +15,7 @@
                   *
                 </span>
               </label>
-              <input type="email" class="form-control" id="email" placeholder="example@mail.com" formControlName="email">
+              <input type="email" class="form-control" placeholder="example@mail.com" formControlName="email">
               <div *ngIf="email?.touched && email?.errors?.email" class="form-text text-danger">Invalid email!</div>
               <div *ngIf="email?.touched && email?.errors?.required" class="form-text text-danger">Email is required!</div>
               <div *ngIf="email?.touched && email?.errors?.emailUsed" class="form-text text-danger">Email is already in use!</div>
@@ -28,7 +28,7 @@
                   *
                 </span>
               </label>
-              <input type="username" class="form-control" id="username" formControlName="username">
+              <input type="username" class="form-control" formControlName="username">
               <!-- <div *ngIf="username?.touched && username?.invalid" class="form-text text-danger">Username already exists.</div> -->
               <div *ngIf="username?.touched && username?.errors?.required" class="form-text text-danger">Username is required!</div>
               <div *ngIf="username?.touched && username?.errors?.usernameUsed" class="form-text text-danger">Username is already in use!</div>
@@ -41,7 +41,7 @@
                   *
                 </span>
               </label>
-              <input type="password" class="form-control" id="password" formControlName="password">
+              <input type="password" class="form-control" formControlName="password">
               <div *ngIf="password?.untouched || password?.valid" id="passwordHelpBlock" class="form-text">Your password must be 8-20 characters long, contain letters, numbers and at least one special character.</div>
               <div *ngIf="password?.touched && password?.invalid" class="form-text text-danger">Your password must be 8-20 characters long, contain letters, numbers and at least one special character.</div>
               <div *ngIf="password?.touched && password?.errors?.required" class="form-text text-danger">Password is required!</div>

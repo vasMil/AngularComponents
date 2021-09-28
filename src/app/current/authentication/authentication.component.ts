@@ -7,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationComponent implements OnInit {
   state = 0;
+  username!: string;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onRegisterComplete(success: boolean){
+    if(success) {
+      this.state = 1
+    }
+  }
+
+  onLoginComplete(loginResp: {success: boolean, username: string}) {
+    if(loginResp.success) {
+      this.username = loginResp.username
+      this.state = 2;
+    }
+  }
 }

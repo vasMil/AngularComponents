@@ -17,4 +17,8 @@ export class AuthService {
   usernameUsed(username: string) {
     return this.http.post("http://localhost:8080/username_used", {username: username});
   }
+
+  loginUser(user: User): Observable<any> {
+    return this.http.post("http://localhost:8080/login", user.toJSON());
+  }
 }

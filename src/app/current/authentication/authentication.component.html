@@ -25,11 +25,11 @@
 </div>
 
 <div *ngIf="state === 2" class="state2">
-    <div class="row">
-        username
-    </div>
+    <button class="row user-profile">
+        {{username}}
+    </button>
 </div>
 
 
-<vm-register *ngIf="state === 0" (registerComplete)="this.state = this.state + 1"></vm-register>
-<vm-login *ngIf="state === 0 || state === 1"></vm-login>
+<vm-register *ngIf="state === 0" (registerComplete)="onRegisterComplete($event)"></vm-register>
+<vm-login *ngIf="state === 0 || state === 1" (loginComplete)="onLoginComplete($event)"></vm-login>

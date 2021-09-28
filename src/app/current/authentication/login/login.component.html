@@ -2,15 +2,42 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="loginModal">Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="loginModal">{{title}}</h5>
+          <button type="button" class="btn-close" id="loginClose" data-bs-dismiss="modal" aria-label="Close" (click)="onClose()"></button>
         </div>
         <div class="modal-body">
-          ...
+          <form [formGroup]="loginForm" *ngIf="state === 0">
+            <div class="form-group mb-3">
+              <label class="form-label">
+                Username
+                <span style="color:red">
+                  *
+                </span>
+              </label>
+              <input type="username" class="form-control" formControlName="username">
+              <div *ngIf="username?.touched && username?.errors?.required" class="form-text text-danger">Username is required!</div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">
+                Password
+                <span style="color:red">
+                  *
+                </span>
+              </label>
+              <input type="password" class="form-control" formControlName="password">
+              <div *ngIf="password?.touched && password?.errors?.required" class="form-text text-danger">Password is required!</div>
+            </div>
+          </form>
+          
+          <div class="message" *ngIf="state == 2">
+            {{message}}
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button *ngIf="state === 0 || state === 1" type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onClose()">Close</button>
+          <button *ngIf="state === 0" type="button" class="btn btn-primary" [disabled]="!this.loginForm.valid" (click)="onLogin()">Log In</button>
+          <button *ngIf="state === 2" type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
         </div>
       </div>
     </div>

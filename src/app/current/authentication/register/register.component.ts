@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     if(this.registerForm.valid){
-      this.authService.registerUser(new User(this.username?.value, this.email?.value, this.password?.value)).subscribe({
+      this.authService.registerUser(new User(this.username?.value, this.password?.value, this.email?.value)).subscribe({
         next: (resp) => {
           this.message = resp.message;
           this.title = "Success";

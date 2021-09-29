@@ -25,8 +25,8 @@
 </div>
 
 <div *ngIf="state === 2" class="state2">
-    <button class="row user-profile">
-        {{username}}
+    <button class="row user-profile" (click)="onProfile()">
+        {{currentUser.username}}
     </button>
 </div>
 

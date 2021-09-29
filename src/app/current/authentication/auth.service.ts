@@ -7,6 +7,7 @@ import { User } from './shared/user.model'
   providedIn: 'root'
 })
 export class AuthService {
+  currentUser!: User;
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +21,13 @@ export class AuthService {
 
   loginUser(user: User): Observable<any> {
     return this.http.post("http://localhost:8080/login", user.toJSON());
+  }
+
+  getUser(token: string): Observable<User> {
+    return this.http.get<User>(`http://localhost:8080/user/${token}`)
+      .pipe(tap((response) => {
+          this.currentUser = response;
+        }
+      ));
   }
 }

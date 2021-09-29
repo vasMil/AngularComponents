@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './auth.service';
+import { User } from './shared/user.model';
 
 @Component({
   selector: 'vm-authentication',
@@ -7,11 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationComponent implements OnInit {
   state = 0;
-  username!: string;
+  currentUser!: User;
 
-  constructor() { }
+  constructor(private cookieService: CookieService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    if (this.cookieService.get('token')) {
+      this.authService.getUser(this.cookieService.get('token')).subscribe({
+        next: () => {
+          this.currentUser = this.authService.currentUser;
+          this.state = 2;
+        },
+        error: (err) => this.state = 0
+      })
+    }
   }
 
   onRegisterComplete(success: boolean){
@@ -20,10 +32,16 @@ export class AuthenticationComponent implements OnInit {
     }
   }
 
-  onLoginComplete(loginResp: {success: boolean, username: string}) {
+  onLoginComplete(loginResp: {success: boolean, user: User}) {
     if(loginResp.success) {
-      this.username = loginResp.username
+      this.currentUser = loginResp.user;
       this.state = 2;
     }
   }
+
+  onProfile() {
+    console.log(this.currentUser);
+  }
+
+  
 }

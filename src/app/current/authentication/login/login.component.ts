@@ -10,7 +10,7 @@ import { User } from '../shared/user.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @Output() loginComplete = new EventEmitter<{success: boolean, username: string}>();
+  @Output() loginComplete = new EventEmitter<{success: boolean, user: User}>();
   closeButton!: HTMLElement;
 
   loginForm!: FormGroup;
@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-    this.authService.loginUser(new User(this.username?.value, undefined, this.password?.value))
+    this.authService.loginUser(new User(this.username?.value, this.password?.value))
       .subscribe({
         next: (res) => {
           this.cookieService.set("token", res.token);
           this.closeButton.click();
-          this.loginComplete.emit({success: true, username: this.username?.value})
+          this.loginComplete.emit({success: true, user: User.fromJSON(res.user)})
           this.state = 1;
         },
         error: (error) => {

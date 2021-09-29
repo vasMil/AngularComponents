@@ -23,14 +23,52 @@ export class VoteComponent implements OnInit{
   ngOnInit(): void {
     this.icons_file = this.icons;
     this.icons = this.icons.map(icon => icon.split('.')[0]);
-    this.hasVoted = (this.cookieService.get('hasVoted') === 'true');
-    if(this.hasVoted) {
-      this.displayResults();
-    }
+    this.setView();
   }
 
-  loadVoteData(): void {
+  onClick(event: Event): void {
+    const clickedIcon = event.target as HTMLElement;
+    this.updating = true;
+    this.registerVote(clickedIcon.id);
+  }
+  
+  private registerVote(icon: string): void {
+    let userToken = this.cookieService.get('token');
+    if(userToken == "") {
+      alert("You need to login!");
+      this.updating = false;
+      return;
+    }
+    this.voteService.registerUserVote(userToken, icon).subscribe({
+      next: (res) => {
+        this.hasVoted = true;
+        this.displayResults();
+        this.cookieService.set('token', res.token);
+      }
+    })
+  }
 
+  private setView(): void {
+    if(this.cookieService.get('token') == "") {
+      return;
+    }
+    this.voteService.getTokenInfo(this.cookieService.get('token')).subscribe({
+      next: (res) => {
+        this.hasVoted = res.has_voted;
+        if(this.hasVoted) {
+          this.displayResults();
+        }
+      }
+    });
+  }
+
+  private displayResults(): void {
+    this.updating = true;
+    this.loadVoteData();
+    this.updating = false;
+  }
+
+  private loadVoteData(): void {
     if (this.voteService.voteResponse.length) {
       this.setPercentageMapper();
     }
@@ -45,7 +83,7 @@ export class VoteComponent implements OnInit{
       });
     }
   }
-
+  
   private setPercentageMapper() {
     let voteSet = new Set<VoteResponse>();
     let totalVotes = 0;
@@ -58,30 +96,5 @@ export class VoteComponent implements OnInit{
       totalVotes === 0 ? this.votesToPercentMap.set(vote, 0) : 
         this.votesToPercentMap.set(vote, (vote.num_of_votes/totalVotes)*100);
     });
-  }
-
-  private registerVote(icon: string): void {
-    this.voteService.incrementVotes(icon).subscribe({
-      next: (resp) => {
-        this.cookieService.set('hasVoted', 'true');
-        this.displayResults()
-        this.hasVoted = true;
-      },
-      error: (err) => {
-        console.log("Failed to update the database! ", err)
-      } // TODO: Logger?
-    })
-  }
-
-  private displayResults(): void {
-    this.updating = true;
-    this.loadVoteData();
-    this.updating = false;
-  }
-
-  onClick(event: Event): void {
-    const clickedIcon = event.target as HTMLElement;
-    this.updating = true;
-    this.registerVote(clickedIcon.id);
   }
 }

@@ -36,6 +36,7 @@ export class AuthenticationComponent implements OnInit {
     if(loginResp.success) {
       this.currentUser = loginResp.user;
       this.state = 2;
+      window.location.reload();
     }
   }
 

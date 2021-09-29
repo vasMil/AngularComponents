@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { VoteComponent } from './vote.component';
 import { SpinnerModule } from '../spinner/spinner.module';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthenticationModule } from '../authentication/authentication.module';
 
 
 
@@ -13,6 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
   imports: [
     CommonModule,
     SpinnerModule,
+    AuthenticationModule
   ],
   providers: [
     CookieService

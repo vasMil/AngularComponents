@@ -1,0 +1,60 @@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModal">Profile</h5>
+          <button type="button" class="btn-close" id="loginClose" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+
+                <div class="form-group mb-3">
+                    <label class="form-label">
+                      Username
+                    </label>
+                    <input type="username" class="form-control" formControlName="username">
+                    <!-- <div *ngIf="username?.touched && username?.errors?.required" class="form-text text-danger">Username can't be empty!</div> -->
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label">
+                      Email
+                    </label>
+                    <input type="email" class="form-control" formControlName="email">
+                    <!-- <div *ngIf="username?.touched && username?.errors?.required" class="form-text text-danger">Username can't be empty!</div> -->
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label">
+                      Old Password
+                    </label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label">
+                      New Password
+                    </label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <!-- <div *ngIf="password?.untouched || password?.valid" id="passwordHelpBlock" class="form-text">Your password must be 8-20 characters long, contain letters, numbers and at least one special character.</div>
+                    <div *ngIf="password?.touched && password?.invalid" class="form-text text-danger">Your password must be 8-20 characters long, contain letters, numbers and at least one special character.</div> -->
+                </div>
+
+            </form>
+
+            <div class="row">
+                <button class="col btn btn-outline-danger btn-sm mx-5 my-3">
+                    Logout
+                </button>
+                <button class="col btn btn-outline-danger btn-sm mx-5 my-3">
+                    Delete Account
+                </button>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+</div>

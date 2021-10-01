@@ -25,7 +25,8 @@
 </div>
 
 <div *ngIf="state === 2" class="state2">
-    <button class="row user-profile" (click)="onProfile()">
+    <button *ngIf="state === 2" type="button" class="row btn btn-primary user-profile" data-bs-toggle="modal" data-bs-target="#loginModal"
+    style="width:99%; min-width: fit-content;" (click)="onProfile()">
         {{currentUser.username}}
     </button>
 </div>
@@ -33,3 +34,4 @@
 
 <vm-register *ngIf="state === 0" (registerComplete)="onRegisterComplete($event)"></vm-register>
 <vm-login *ngIf="state === 0 || state === 1" (loginComplete)="onLoginComplete($event)"></vm-login>
+<vm-profile *ngIf="state === 2"></vm-profile>
